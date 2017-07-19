@@ -3,13 +3,26 @@
   <head>
     <meta charset="utf-8">
     <title>Weather Central</title>
+
+    <!-- ***** CSS ***** -->
+<!-- add css link -->
+
   </head>
   <body>
     <h1>Weather and Quotes</h1>
     <h2>... to make your day more sunny!</h2>
 
-    <div id="forcast"></div>
+    <main>
 
+      <button type="button" name="button" class="button londonButton">London</button>
+      <button type="button" name="button" class="button seattleButton">Seattle</button>
+
+    <div id="container">
+      <div >Your weather forcast</div>
+    </div>
+  </main>
+
+    <!--
       <form id="apiOptions" onsubmit="handleSubmit()">
         <fieldset>
           <legend>City</legend>
@@ -22,9 +35,7 @@
         </fieldset>
         <input type="submit" name="submit" value="Weather forcast!">
       </form>
-<a href="https://api.openweathermap.org/data/2.5/weather?lat=51.5074&lon=0.1278&appid=b1b15e88fa797225412429c1c50c122a1">London</a>
-
-http://samples.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=b1b15e88fa797225412429c1c50c122a1
+    -->
     <!-- <button type="button" onclick="getQuote()">Quote Me!</button> -->
     <script type="text/javascript" src="weather.js"></script>
 
