@@ -7,13 +7,14 @@ const form = document.getElementById("apiOptions")
 // ***** Buttons *****
 const lon = document.querySelector("button.londonButton")
 const sea = document.querySelector('button.seattleButton')
-
+const myLoc = document.querySelector('button.myLocationButton')
 
 let debug = null
 const London = 'lat=51.5074&lon=0.1278'
 const Seattle = 'lat=47.6762&lon=-122.3182'
 const apiKey = '&appid=fcdcf1d41daf42b0c84ba9783ba72827'
 const units = '&units=imperial'
+
 
 //let selectedCity = form.city.value
 //console.log("1 form.city.value=" + form.city.value)
@@ -22,6 +23,7 @@ const units = '&units=imperial'
 // ***** Click event listeners for buttons *****
 lon.addEventListener("click", getLondon)
 sea.addEventListener("click", getSeattle)
+myLoc.addEventListener("click", getMyLoc)
 
 //console.log("OpenWeatherAPI link = " + apiURL + selectedCity + apiKey)
 
@@ -32,17 +34,25 @@ function getWeather() {
 	document.getElementById("container").innerHTML = ""
 }
 
-// Create code in the button (or form) handler to generate the quote
+// Get the weather for London
 function getLondon() {
   console.log("getLondon() starting")
   getWeather()
   callApi(London)
 }
 
+// Get the weather for Seattle
 function getSeattle() {
   console.log("getSeattle() starting")
   getWeather()
   callApi(Seattle)
+}
+
+// Get the weather for my location
+function getMyLoc() {
+	getWeather()
+	navigator.geolocation.getCurrentPosition(geolocSuccess, geolocError)
+  // changeColor()
 }
 
 // Use handleSubmit for form checkboxes
