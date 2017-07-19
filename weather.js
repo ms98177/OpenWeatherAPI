@@ -51,8 +51,26 @@ function getSeattle() {
 // Get the weather for my location
 function getMyLoc() {
 	getWeather()
-	navigator.geolocation.getCurrentPosition(geolocSuccess, geolocError)
-  // changeColor()
+	navigator.geolocation.getCurrentPosition(myLocSuccess, myLocError)
+}
+
+// Get my location
+function getLocation(locObj) {
+	let myLatLon = 'lat=' + locObj.lat + '&lon=' + locObj.lng
+	console.log('myLatLon = ' + myLatLon)
+	callApi(myLatLon)
+}
+
+// Called by getMyLoc
+function myLocSuccess(position) {
+	const myPosition = {lat: position.coords.latitude, lng: position.coords.longitude}
+	console.log('myPosition = ' + myPosition)
+	getLocation(myPosition)
+}
+
+function myLocError() {
+	console.log("We can't find you!")
+	document.getElementById("container").innerHTML = "Please allow us to track your every move 8)"
 }
 
 // Use handleSubmit for form checkboxes
@@ -151,6 +169,7 @@ function listInfo(message) {
 	p.innerHTML = message
 	document.getElementById("weatherDiv").appendChild(p)
 }
+
 
 
 function queryBuilderOther(queryObj){
