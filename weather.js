@@ -146,13 +146,13 @@ function onLoadFunction() {
     item5.innerHTML = "A Low of: " + Math.round(resp.main.temp_min) + " °F"
   }
   list.appendChild(item).setAttribute("class", "city-name")
-  list.appendChild(item2).setAttribute("class", "wea-desc")
+  list.appendChild(item2).setAttribute("class", "weather-description")
   //console.log(item2.innerHTML)
   list.appendChild(item3).setAttribute("class", "current-temp")
   list.appendChild(item4).setAttribute("class", "high-temp")
   list.appendChild(item5).setAttribute("class", "low-temp")
   cont.appendChild(list)
-  //changeColor(item2.innerHTML)
+  changeColor(item2.innerHTML)
 }
 
 
@@ -171,24 +171,52 @@ function listInfo(message) {
 }
 
 
-
-function queryBuilderOther(queryObj){
-  let holder = []
-  // loop through queryObj key value pairs
-  for(let key in queryObj){
-    // turn each one into "key=value"
-    let convert = `${encodeURIComponent(key)}=${encodeURIComponent(queryObj[key])}`
-    // encodeURIComponent converts spaces and & to URI friendly values so we don't have to worry about them
-    holder.push(convert)
-  }
-  // concatenate the pairs together, with & between
-  let longString = holder.join("&")
-  // prepend a ? to concatenated string, return
-  return `?${longString}`
+//function changes the css background color depending
+// the weather.description
+//******************************
+function changeColor(myWeaDesc) {
+  console.log("changeColor is firing")
+  $("li.weather-description").each(function() {
+    switch (myWeaDesc) {
+      case ("clear sky"):
+        $('body').css("background-color","#7EC0EE");
+        $("weather").attr("class","clear-sky");
+        break;
+      case ("few clouds"):
+        $('body').css("background-color","#ADD8E6");
+        $("weather").attr("class","few-clouds");
+        break;
+      case ("overcast clouds"):
+        $('body').css("background-color","#b3cbd1");
+        $("weather").attr("class","cloudy");
+        break;
+      case ("scattered clouds"):
+      case ("broken clouds"):
+        $('body').css("background-color","#b3cbd1");
+        $("weather").attr("class","scattered-clouds");
+        break;
+      case ("shower rain"):
+      case ("light rain"):
+      case ("rain"):
+        $('body').css("background-color","#B0C4DE");
+        $("weather").attr("class","rain");
+        break;
+      case ("thunderstorm"):
+        $('body').css("background-color","#999999");
+        $("weather").attr("class","thunder");
+        break;
+      case ("snow"):
+        $('body').css("background-color","#efefef");
+        $('ul').css("color","#666");
+        $("weather").attr("class","snow");
+        break;
+      case ("mist"):
+        $('body').css("background-color","#e2e2e2");
+        $('ul').css("color","#666");
+        $("weather").attr("class","mist");
+        break;
+      default:
+        console.log("oops");
+      }
+  });
 }
-
-
-// document.addEventListener("DOMContentLoaded", function () {
-//   let btnQuote = document.querySelector("button")
-//   btnQuote.addEventListener("click", getQuote)
-// })

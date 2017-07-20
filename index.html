@@ -5,7 +5,7 @@
     <title>Weather Central</title>
 
     <!-- ***** CSS ***** -->
-<!-- add css link -->
+    <link rel="stylesheet" type="text/css" href="weather.css">
 
   </head>
   <body>
@@ -14,30 +14,19 @@
 
     <main>
 
-      <button type="button" name="button" class="button myLocationButton">My Location</button>
-      <button type="button" name="button" class="button londonButton">London</button>
-      <button type="button" name="button" class="button seattleButton">Seattle</button>
+      <button type="button" name="button" class="button myLocationButton" style="vertical-align:middle"><span>Here</span></button>
+      <button type="button" name="button" class="button londonButton" style="vertical-align:middle"><span>London</span></button>
+      <button type="button" name="button" class="button seattleButton" style="vertical-align:middle"><span>Seattle</span></button>
 
     <div id="container">
-      <div >Your weather forcast</div>
+      <div id="weatherForcast">Your weather forcast</div>
     </div>
   </main>
 
-    <!--
-      <form id="apiOptions" onsubmit="handleSubmit()">
-        <fieldset>
-          <legend>City</legend>
-          <label>
-            <input type="radio" name="city" value="lat=51.5074&lon=0.1278" checked>London
-          </label>
-          <label>
-            <input type="radio" name="city" value="lat=47.6762&lon=-122.3182">Seattle
-          </label>
-        </fieldset>
-        <input type="submit" name="submit" value="Weather forcast!">
-      </form>
-    -->
-    <!-- <button type="button" onclick="getQuote()">Quote Me!</button> -->
+  <!-- animated weather bkd -->
+  <weather id="animate-area" class="default"></weather>
+
+
     <script type="text/javascript" src="weather.js"></script>
 
   </body>
